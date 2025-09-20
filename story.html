@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cerita Cinta Kita</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+      background: url('bg.jpg') no-repeat center center/cover;
+      color: #fff;
+    }
+
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .card {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 90%;
+      width: 500px;
+      z-index: 2;
+      animation: fadeIn 1.5s ease-in-out forwards;
+    }
+
+    .card h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5em;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    .card p {
+      font-size: 1.05em;
+      color: #f8f8f8;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeInText 1.5s ease-in-out 1s forwards;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+      background: #ff5e8e;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 30px;
+      transition: 0.3s;
+    }
+
+    .card a:hover {
+      background: #ff3370;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -60%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+
+    @keyframes fadeInText {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .heart {
+      width: 20px;
+      height: 20px;
+      background: red;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: rotate(45deg);
+      animation: float 10s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: red;
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="overlay"></div>
+
+  <div class="card">
+    <h2>Cerita Cinta Kita 💞</h2>
+    <p>
+      Semua berawal dari pertemuan sederhana yang tak direncanakan.  
+      Hari demi hari, kita mulai mengenal, tertawa, dan mencintai.  
+      21 September menjadi hari sakral, di mana dua hati saling terikat dalam cinta.
+    </p>
+    <p>
+      Terima kasih sudah tetap di sisiku, melalui senyum dan air mata.  
+      Ini baru awal dari kisah panjang yang akan kita tulis bersama.
+    </p>
+    <a href="index.html">⟵ Kembali</a>
+      <a href="galery.html">Lanjut ➝</a>
+  </div>
+
+  <div class="hearts" id="hearts"></div>
+
+  <script>
+    const container = document.getElementById("hearts");
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+      container.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
+</body>
+</html>
